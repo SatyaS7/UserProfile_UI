@@ -1,0 +1,136 @@
+<link rel="stylesheet" type="text/css" href="registration.component.css">
+<body>
+<div class="container">
+    
+    <h1>Register</h1>
+    
+    <form [formGroup]="registrationForm" (ngSubmit)="register()">
+    
+   
+        <label for="firstname"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" formControlName="firstName" id="firstname">
+        <div *ngIf="submitted && registrationForm.controls.firstName.errors" class="error">
+            <div *ngIf="registrationForm.controls.firstName.errors.required">
+                First name is required
+            </div>
+            <div *ngIf="registrationForm.controls.firstName.errors.pattern">
+                First name must have only characters 
+            </div>
+            <div *ngIf="registrationForm.controls.firstName.errors.maxlength">
+                First name can only have 15 characters 
+            </div>
+            <div *ngIf="registrationForm.controls.firstName.hasError('whitespace')">
+                Please enter First Name 
+            </div>
+        </div>
+
+
+        <label for="middlename"><b>Middle Name</b></label>
+        <input type="text" placeholder="Enter Middle Name" formControlName="middleName" id="middlename">
+        <div *ngIf="submitted && registrationForm.controls.middleName.errors" class="error">
+            <div *ngIf="registrationForm.controls.middleName.errors.maxlength">
+                Middle name can only have 15 characters 
+            </div>
+        </div>
+
+    
+        <label for="lastname"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" formControlName="lastName" id="lastname">
+        <div *ngIf="submitted && registrationForm.controls.lastName.errors" class="error">
+            <div *ngIf="registrationForm.controls.lastName.errors.required">
+                Last name is required
+            </div>
+            <div *ngIf="registrationForm.controls.lastName.errors.pattern">
+                Last name must have only characters 
+            </div>
+            <div *ngIf="registrationForm.controls.lastName.errors.maxlength">
+                Last name can only have 15 characters 
+            </div>
+            <div *ngIf="registrationForm.controls.lastName.hasError('whitespace')">
+                Please enter Last Name 
+            </div>
+        </div>    
+
+    
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" formControlName="email" id="email">
+        <div *ngIf="submitted && registrationForm.controls.email.errors" class="error">
+            <div *ngIf="registrationForm.controls.email.errors.required">
+                Email is required
+            </div>
+            <div *ngIf="registrationForm.controls.email.errors.email">
+                Email must have only characters 
+            </div>
+            <div *ngIf="registrationForm.controls.email.errors.maxlength">
+                Email can only have 35 characters 
+            </div>
+            <div *ngIf="registrationForm.controls.email.hasError('whitespace')">
+                Please enter Email 
+            </div>
+        </div>
+    
+
+        <label for="phonenumber"><b>Phone Number</b></label>
+        <input type="text" placeholder="Enter Phone Number" formControlName="phoneNumber" id="phonenumber">
+        <div *ngIf="submitted && registrationForm.controls.phoneNumber.errors" class="error">
+            <div *ngIf="registrationForm.controls.phoneNumber.errors.pattern">
+                Phone Number can only have numbers
+            </div>
+            <div *ngIf="registrationForm.controls.phoneNumber.errors.minlength">
+                Phone Number should be at least 10 numbers
+            </div>
+            <div *ngIf="registrationForm.controls.phoneNumber.errors.maxlength">
+                Phone Number cannot be more than 10 numbers
+            </div>
+        </div>
+
+
+        <label for="dateofbirth"><b>Date of Birth</b></label>
+        <input type="date" formControlName="dateOfBirth" id="dateofbirth">
+
+        
+        <p><b>Please select your gender:</b></p>
+        <div *ngIf="submitted && registrationForm.controls.gender.errors" class="error">
+            <div *ngIf="submitted && registrationForm.controls.gender.errors.required">
+            Please select a gender
+            </div>
+        </div>
+        <p>
+            <input type="radio" id="male" formControlName="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" formControlName="gender" value="female">
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" formControlName="gender" value="other">
+            <label for="other">Other</label>
+        </p>
+
+    
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" formControlName="password" id="password">
+        <div *ngIf="submitted && registrationForm.controls.password.errors" class="error">
+            <div *ngIf="registrationForm.controls.password.errors.required">
+                Password is required
+            </div>
+            <div *ngIf="registrationForm.controls.password.errors.minlength">
+                Phone Number should be at least 6 characters
+            </div>
+        </div>    
+
+    
+        <label for="confirm-password"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" id="confirm-password">
+        <div *ngIf="submitted && registrationForm.controls.confirmPassword.errors" class="error">
+            <div *ngIf="registrationForm.controls.confirmPassword.errors.required">
+                Confirm Password is required
+            </div>
+            <div *ngIf="registrationForm.controls.confirmPassword.errors.NoPasswordMatch">
+                Confirm Password does not match with the Password
+            </div>
+        </div>
+
+
+    <input type="submit" class="registerbtn" value="Register">
+    </form>
+
+</div>
+</body>
